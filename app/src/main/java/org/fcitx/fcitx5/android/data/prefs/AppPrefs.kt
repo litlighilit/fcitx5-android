@@ -264,6 +264,11 @@ class AppPrefs(private val sharedPreferences: SharedPreferences) {
             expandedCandidateGridSpanCountLandscape = secondary
         }
 
+            val textKeyboardLayout = enumList(
+                R.string.text_keyboard_layout,
+                "text_keyboard_layout",
+                TextKeyboardLayout.Default
+            )
     }
 
     inner class Candidates :

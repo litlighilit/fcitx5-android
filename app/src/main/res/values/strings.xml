@@ -172,6 +172,8 @@
     <string name="system_default">System default</string>
     <string name="editor_info_inspector">EditorInfo Inspector</string>
     <string name="default_">Default</string>
+    <string name="text_keyboard_layout">Text keyboard layout</string>
+    <string name="text_keyboard_layout_alternative">Alternative</string>
     <string name="saving">Saving</string>
     <string name="delete_all_pinned_items">Delete all pinned items?</string>
     <string name="vivo_keypress_workaround">vivo Origin OS keypress workaround</string>

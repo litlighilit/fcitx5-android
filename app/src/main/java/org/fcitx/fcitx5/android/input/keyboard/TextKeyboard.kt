@@ -29,8 +29,7 @@ class TextKeyboard(
 
     companion object {
         const val Name = "Text"
-
-        val Layout: List<List<KeyDef>> = listOf(
+        val DefaultLayout: List<List<KeyDef>> = listOf(
             listOf(
                 AlphabetKey("Q", "1"),
                 AlphabetKey("W", "2"),
@@ -74,6 +73,58 @@ class TextKeyboard(
                 ReturnKey()
             )
         )
+
+        val AlternativeLayout: List<List<KeyDef>> = listOf(
+            listOf(
+                AlphabetKey("Q", "1"),
+                AlphabetKey("W", "2"),
+                AlphabetKey("E", "3"),
+                AlphabetKey("R", "4"),
+                AlphabetKey("T", "5"),
+                AlphabetKey("Y", "6"),
+                AlphabetKey("U", "7"),
+                AlphabetKey("I", "8"),
+                AlphabetKey("O", "9"),
+                AlphabetKey("P", "0")
+            ),
+            listOf(
+                // user requested A -> ~, S -> ! (others keep default alt)
+                AlphabetKey("A", "~"),
+                AlphabetKey("S", "!"),
+                AlphabetKey("D", "@"),
+                AlphabetKey("F", "#"),
+                AlphabetKey("G", "%"),
+                AlphabetKey("H", "'"),
+                AlphabetKey("J", "&"),
+                AlphabetKey("K", "*"),
+                AlphabetKey("L", "?")
+            ),
+            listOf(
+                CapsKey(),
+                AlphabetKey("Z", "("),
+                AlphabetKey("X", ")"),
+                AlphabetKey("C", "-""),
+                AlphabetKey("V", "_"),
+                AlphabetKey("B", ":"),
+                AlphabetKey("N", ";"),
+                AlphabetKey("M", "/"),
+                BackspaceKey()
+            ),
+            listOf(
+                LayoutSwitchKey("?123", ""),
+                CommaKey(0.1f, KeyDef.Appearance.Variant.Alternative),
+                SpaceKey(),
+                SymbolKey(".", 0.1f, KeyDef.Appearance.Variant.Alternative),
+                LanguageKey(),
+                ReturnKey()
+            )
+        )
+
+        val Layout: List<List<KeyDef>>
+            get() = when (AppPrefs.getInstance().keyboard.textKeyboardLayout.getValue()) {
+                TextKeyboardLayout.Alternative -> AlternativeLayout
+                else -> DefaultLayout
+            }
     }
 
     val caps: ImageKeyView by lazy { findViewById(R.id.button_caps) }
